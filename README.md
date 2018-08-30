@@ -53,10 +53,16 @@ Letsencrypt installieren
 
 ```
 sudo echo "deb http://ftp.debian.org/debian stretch-backports main" >> /etc/apt/sources.list.d/letsencrypt.list
+sudo apt-get -qq update
 ```
 
  2. Eigentliche Installation
  
+```
+sudo echo "deb http://ftp.debian.org/debian stretch-backports main" >> /etc/apt/sources.list.d/letsencrypt.list
+sudo apt-get -qq update
+```
+
 
 letsencrypt Zertifikat für diesen Host erstellen (unbedingt notwendig, ohne gültiges Zertifikat geht nichts!)
 1. Port 80 auf RPi weiterleiten
