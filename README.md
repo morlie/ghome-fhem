@@ -30,11 +30,11 @@ sudo apt-get -qq install nodejs
 
 | Feldame in der Anleitung | pwgen Befehl | Beispiel |
 |---|---|---|
-|oauthClientId |pwgen -N 1 -s 8   |  wgbkHUA2 |
-|oauthClientSecret|pwgen -N 1 -s 42   |G9T0TKc0qdrzWwYHurecO0IZYUf93qB80nJPZ4XAcx   |
-|oauthUser|pwgen -N 1 -s 8   | wDgsn36x|
-|password|pwgen -N 1 -s 42   | WqoHFS0FzNzeEfPPwvC5gRAnZCt5vvM8LVEF3aL4LQ  |
-|authtoken| pwgen -N 1 -s 42  | agUACUoaCFQt2qFLcKzY2J0FDAOyIcjsGcOckpVBEo  |
+|<change_me___oauthClientId>|pwgen -N 1 -s 8   |  wgbkHUA2 |
+|<change_me___oauthClientSecret>|pwgen -N 1 -s 42   |G9T0TKc0qdrzWwYHurecO0IZYUf93qB80nJPZ4XAcx   |
+|<change_me___oauthUser>|pwgen -N 1 -s 8   | wDgsn36x|
+|<change_me___password>|pwgen -N 1 -s 42   | WqoHFS0FzNzeEfPPwvC5gRAnZCt5vvM8LVEF3aL4LQ  |
+|<change_me___authtoken>| pwgen -N 1 -s 42  | agUACUoaCFQt2qFLcKzY2J0FDAOyIcjsGcOckpVBEo  |
 
 
 ## Domain registrieren z.B. bei ddnss.de (gratis)
@@ -65,24 +65,41 @@ sudo apt-get -qq update
 
 
 letsencrypt Zertifikat für diesen Host erstellen (unbedingt notwendig, ohne gültiges Zertifikat geht nichts!)
-1. Port 80 auf RPi weiterleiten
-2. certbot ausführen
+1. Port 80 auf RPi weiterleiten. Das muss am Router (z. B. Fritzbox) gemacht werden. Hierzu den externen Port 80 zum internen Port 80 auf den Raspberry weiterleiten. <Internet> -->Port 80--> <Router> -->Port 80--> <Raspberry>
+2. certbot ausführen und Fragen beantworten.
 ```
 sudo apt install certbot
-sudo certbot
+sudo certbot certonly --standalone 
 ```
 3. Port 80 Weiterleitung entfernen
 4. Bei jedem Zertifikatsrenew (certbot renew) muss Port 80 wieder weitergeleitet werden (alle 3 Monate)
 
 ## ghome-fhem installieren
-1. GitHub repo lokal auschecken ($HOME/ghome)
+1. GitHub repo lokal auschecken
+
+```
+cd $HOME
+git clone https://github.com/dominikkarall/ghome-fhem
+```
+
+Jetzt sollte es Ordner /home/pi/ghome-fhem mit dem Inhalt des Git-Projektes geben. Wenn das Setup nicht mit dem User pi sondern mit einem anderen gemacht werden ist <pi> durch den enstsprechenden Namen zu ersetzen.
+
+
 2. Im Ordner folgendes Kommando ausführen:
 ```
+cd $HOME/ghome-fhem
 npm install
 ```
-3. config.json anpassen
+3. config.json kopieren
+```
+cd $HOME
+mkdir .ghome
+cp ghome-fhem/config-sample.json .ghome/config.json
+```
 
-$HOME/.ghome/config.json anpassen
+4. config.json anpassen
+
+Im Beispiel 
 ```
 {
     "ghome": {
@@ -92,12 +109,12 @@ $HOME/.ghome/config.json anpassen
         "certFile": "./cert.pem",
         "nat-pmp": "",
         "nat-upnp": false,
-        "oauthClientId": "CHANGEME34567890asdf45678asdf5678asdf",
-                "oauthClientSecret": "CHANGEME567897654345678ghjaskdfhg456",
+        "oauthClientId": "<change_me___oauthClientId>",
+                "oauthClientSecret": "<change_me___oauthClientSecret>",
                 "oauthUsers": {
-                        "CHANGMEusername": {
-                                "password": "CHANGEME456789645678dfizh28gasdf",
-                                "authtoken": "CHANGEME768782935487zuaisdpfhgu987g23d"
+                        "<change_me___oauthUser>": {
+                                "password": "<change_me___password>",
+                                "authtoken": "<change_me___authtoken>"
                         }
                 }
     },
@@ -113,7 +130,41 @@ $HOME/.ghome/config.json anpassen
     ]
 }
 ```
-	
+
+Mit den Beispielwerten von oben würde die Datei so aussehen ... 
+```
+{
+    "ghome": {
+        "port": 3000,
+        "name": "Google Home",
+        "keyFile": "./key.pem",
+        "certFile": "./cert.pem",
+        "nat-pmp": "",
+        "nat-upnp": false,
+        "oauthClientId": "wgbkHUA2",
+                "oauthClientSecret": "G9T0TKc0qdrzWwYHurecO0IZYUf93qB80nJPZ4XAcx",
+                "oauthUsers": {
+                        "wDgsn36x": {
+                                "password": "WqoHFS0FzNzeEfPPwvC5gRAnZCt5vvM8LVEF3aL4LQ",
+                                "authtoken": "agUACUoaCFQt2qFLcKzY2J0FDAOyIcjsGcOckpVBEo"
+                        }
+                }
+    },
+    
+    "connections": [
+        {
+            "name": "FHEM",
+            "server": "127.0.0.1",
+            "port": "8083",
+            "webname": "fhem",
+            "filter": "room=GoogleHome"
+        }
+    ]
+}
+```
+
+
+
 Bitte passt Benutzername (CHANGEMEusername) und Passwort (password) an, ersetzt auch die Werte von `oauthClientId`, `oauthClientSecret` und `authtoken`, gerne auch duch zufällig generierte Werte. So stellt ihr sicher, dass der Zugang für unbefugte Personen zumindest erschwert wird.
 
 4. letsencrypt Zertifikat kopieren
