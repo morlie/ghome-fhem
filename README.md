@@ -48,6 +48,8 @@ Im Beispiel wird pwgen verwendet. Es kann auch jeder Passwortgenerator online ve
 
 Hierfür werden diese Werte benötigt, die im ersten Schritt erzeugt wurden. 
 
+| Feldame in der Anleitung | pwgen Befehl | Beispiel |
+|---|---|---|
 |<change_me___oauthClientId>|pwgen -N 1 -s 8   |  wgbkHUA2 |
 |<change_me___oauthClientSecret>|pwgen -N 1 -s 42   |G9T0TKc0qdrzWwYHurecO0IZYUf93qB80nJPZ4XAcx   |
 
@@ -240,16 +242,12 @@ Wenn die Schritte bis hierher korrekt ausgeführt wurde startet ghome mit etlich
 
 Die Datei kann auch mit einem Editor angelegt werden und dann WinSCP oder anderem SSH-Client auf den Server gelegt werden. Hierbei ist zu beachten, dass die Formatiertung (End of Line) Unix-konform ist. Sonst läuft es möglicherweise nicht. Empfohlen wird nano oder vi Editor.
 
-
 ```
-sudo nano /lib/systemd/system/ghome.service
+cd $HOME
+cp sudo ghome-fhem/ghome-sample.service /lib/systemd/system/ghome.service
 ```
-Nun öffnet sich der Editor nano. 
-- Inhalt des Scriptes unten mit < STRG > + < V > kopieren
-- mit der RECHTEN Maustaste in der Console klicken, das überträge den kopierten Text
-- mit < STRG > + < X > nano beenden. Die Frage ob gespeichert werden soll mit J/Y (je nach Sprache) beantworten.
 
-Inhalt für das Script.
+Inhalt des Scripts. Wenn ghome unter einem anderen User laufen soll muss pi durch den Usernamen ersetzt werden (3 mal enthalten)
 ```
 [Unit]
 Description=Google Assistant FHEM Connector
@@ -268,7 +266,6 @@ Alias=ghome.service
 ```
 
 Service aktivierte damit ghome bei einem Systemstart mitgestartet wird
-
 ```
 sudo systemctl enable ghome.service
 ```
