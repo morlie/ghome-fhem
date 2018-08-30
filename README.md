@@ -195,6 +195,37 @@ sudo cp /etc/letsencrypt/DOMAIN/privkey.pem $HOME/ghome/ghome-fhem/key.pem
 sudo cp /etc/letsencrypt/DOMAIN/fullchain.pem $HOME/ghome/ghome-fhem/cert.pem
 ```
 
+4b. letencrypt Zertifikate ohne kopieren einbinden
+
+Hierzu nur ein paar Ansätze .. empfohlen wenn ghome unter einem eigenen User (nicht pi) läuft.
+
+```
+#Gruppe für Letsencrypt
+sudo addgroup lecert
+
+#ghome-User der Gruppe zuweisen
+usermod -a -G lecert ghomeUsr
+
+#Gruppe setzen
+chown -R root:lecert /etc/letsencrypt/
+
+#Letsencrypt der Gruppe lecert erlauben (lesen)
+chmod g+r -R /etc/letsencrypt/
+```
+
+Einschränkung des Users ghomeUsr 
+- normaler User
+- kein, oder eingeschränkte sudo
+- kein passwort (logon nicht möglich)
+- keine Shell hinterlegt (/bin/false, somit auch kein su)
+
+Vorteil: Zertifikat muss beim Erneuern nicht jedes mal kopiert werden.
+
+```
+        "keyFile": "/etc/letsencrypt/ghome.ddns.de/privkey.pem" ,
+        "certFile": "/etc/letsencrypt/ghome.ddns.de/fullchain.pem",
+```
+
 5. Port 443 (extern) auf 3000 (intern, auf das Gerät wo ghome läuft) weiterleiten. Auch das muss wieder am Router gemacht werden. Hier ist zu beachten, dass sich externer und interner Port unterscheidet.
 
 6. bin/ghome starten
