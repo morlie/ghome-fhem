@@ -245,11 +245,20 @@ sudo service status
      - Create smart home action: URL https://CHANGEME.ddnss.de
    - Test Actions in the simulator
      - Testing rechts oben aktivieren, wenn nicht automatisch passiert
-7. action.json
+     
+     
+## Google action und lokalen Server bekannt machen
 
-Den Inhalt der action.json mit dem Inhalt der action-sample.json aus diesem Ordner ersetzen. <change_me__domainname>  wird dabei durch die URL ersetzt, unter welcher der Dienst bei euch erreichbar ist.
-action.json
+Den Inhalt der action.json kopieren und   <change_me__domainname>  durch die Domain die registriert wurde ersetzen (im Beispiel ddnss.de). Unter welcher der Dienst bei euch erreichbar ist.
 
+action.json kopieren
+```
+cd $HOME
+mkdir .ghome
+cp ghome-fhem/config-action.json .ghome/action.json
+```
+
+Inhalt von .ghome/action.json anpassen (domainname)
 ```
 {
   "actions": [
@@ -271,16 +280,16 @@ action.json
   "locale": "de"
 }
 ```
-8. gactions ausführen
+8. gactions downloaden und ausführen
 
 Download von hier: https://developers.google.com/actions/tools/gactions-cli
 
-In diesem Codeblock wird die ARM Version mit wget heruntergeladen.
+In diesem Codeblock wird die ARM Version (Raspberry) mit wget heruntergeladen.
 ```
-cd $HOME/ghome/ghome-fhem
+cd $HOME/.ghome
 wget -c https://dl.google.com/gactions/updates/bin/linux/arm/gactions
 chmod +x gactions
-gactions update --action_package action.json --project FHEM-Connector
+./gactions update --action_package action.json --project <change_me__google_project_ID>
 ```
 ## Google Home App einrichten
 In der Google Home-App auf einem Smartphone oder Tablet lässt sich nun im Smart Home-Bereich ein neuer Gerätetyp hinzufügen. In der Liste aller Typen taucht jetzt auch euer eigener auf, er beginnt mit [test].
