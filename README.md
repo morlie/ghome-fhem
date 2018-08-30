@@ -1,9 +1,3 @@
-```
-sudo apt install certbot
-sudo certbot
-```
-
-
 
 # Google Home/Assistant FHEM Connector
 
@@ -26,7 +20,9 @@ sudo curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
 sudo apt-get -qq install nodejs
 ```
 
-## Optional, jetzt schon Passwörter und Benutzernamen mit pwgen erstellen
+## Passwörter und Benutzernamen (mit pwgen) erstellen
+
+Im Beispiel wird pwgen verwendet. Es kann auch jeder Passwortgenerator online verwendet werden.
 
 | Feldame in der Anleitung | pwgen Befehl | Beispiel |
 |---|---|---|
@@ -46,6 +42,35 @@ sudo apt-get -qq install nodejs
 ```
 
 2. Alternativ kann den Update der IP auch der Router übernehmen wenn er diese Funktion bietet (z. B. Fritzbox). Anleitungen bieten idR. die Anbieter des dyndns-Dienstes.
+
+
+## Google Action Projekt erstellen
+
+Hierfür werden diese Werte benötigt, die im ersten Schritt erzeugt wurden. 
+
+|<change_me___oauthClientId>|pwgen -N 1 -s 8   |  wgbkHUA2 |
+|<change_me___oauthClientSecret>|pwgen -N 1 -s 42   |G9T0TKc0qdrzWwYHurecO0IZYUf93qB80nJPZ4XAcx   |
+
+Screenshots der einzelnen Schritte im "doc"-Ordner. (Google_Actions.docx)
+
+1. https://console.actions.google.com/ Add/import project auswählen
+2. Projektname FHEM-Connector
+3. Home Control auswählen
+4. Smart home auswählen
+5. Overview - Quick Setup
+   - Name your Smart Home action: FHEM Connector
+   - Add account linking
+     - Account creation: No, I only want to allow account creation on my website
+     - Linking type: OAuth, Authorization code
+     - Client information: ClientID (oauthClientId) und ClientSecret (oauthClientSecret) aus der config.json verwenden
+     - Client information: Authorization URL (https://CHANGEME.ddnss.de/oauth), Token URL (https://CHANGEME.ddnss.de/token)
+     - Testing instructions: "Schalte das Licht ein" eintragen
+6. Overview - Build your Action
+   - Add Action - Add your first Action
+     - Create smart home action: URL https://CHANGEME.ddnss.de
+   - Test Actions in the simulator
+     - Testing rechts oben aktivieren, wenn nicht automatisch passiert
+
 
 ## Zertifikat erstellen
 
@@ -226,27 +251,7 @@ sudo service status
 ```
 
 
-## Google Action Projekt erstellen
 
-Screenshots der einzelnen Schritte im "doc"-Ordner. (Google_Actions.docx)
-
-1. https://console.actions.google.com/ Add/import project auswählen
-2. Projektname FHEM-Connector
-3. Home Control auswählen
-4. Smart home auswählen
-5. Overview - Quick Setup
-   - Name your Smart Home action: FHEM Connector
-   - Add account linking
-     - Account creation: No, I only want to allow account creation on my website
-     - Linking type: OAuth, Authorization code
-     - Client information: ClientID (oauthClientId) und ClientSecret (oauthClientSecret) aus der config.json verwenden
-     - Client information: Authorization URL (https://CHANGEME.ddnss.de/oauth), Token URL (https://CHANGEME.ddnss.de/token)
-     - Testing instructions: "Schalte das Licht ein" eintragen
-6. Overview - Build your Action
-   - Add Action - Add your first Action
-     - Create smart home action: URL https://CHANGEME.ddnss.de
-   - Test Actions in the simulator
-     - Testing rechts oben aktivieren, wenn nicht automatisch passiert
      
      
 ## Google action und lokalen Server bekannt machen
