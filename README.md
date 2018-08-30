@@ -45,6 +45,8 @@ sudo apt-get -qq install nodejs
 	39 * * * * /usr/bin/wget -q -O - "https://ddnss.de/upd.php?key=CHANGEME&host=CHANGEME.ddnss.de"
 ```
 
+2. Alternativ kann den Update der IP auch der Router übernehmen wenn er diese Funktion bietet (z. B. Fritzbox). Anleitungen bieten idR. die Anbieter des dyndns-Dienstes.
+
 ## Zertifikat erstellen
 
 Letsencrypt installieren
@@ -59,16 +61,13 @@ sudo apt-get -qq update
  2. Eigentliche Installation
  
 ```
-sudo echo "deb http://ftp.debian.org/debian stretch-backports main" >> /etc/apt/sources.list.d/letsencrypt.list
-sudo apt-get -qq update
+sudo apt-get -qq install certbot
 ```
-
 
 letsencrypt Zertifikat für diesen Host erstellen (unbedingt notwendig, ohne gültiges Zertifikat geht nichts!)
-1. Port 80 auf RPi weiterleiten. Das muss am Router (z. B. Fritzbox) gemacht werden. Hierzu den externen Port 80 zum internen Port 80 auf den Raspberry weiterleiten. <Internet> -->Port 80--> <Router> -->Port 80--> <Raspberry>
-2. certbot ausführen und Fragen beantworten.
+1. Port 80 auf RPi weiterleiten. Das muss am Router (z. B. Fritzbox) gemacht werden. Hierzu den externen Port 80 zum internen Port 80 auf den Raspberry weiterleiten. < Internet > -->Port 80--> < Router > -->Port 80--> < Raspberry >
+2. certbot ausführen und Fragen beantworten. Der Parameter "--standalone" startet einen eigenen, temporären Webserver. Wenn nginx oder apache auf dem Server läuft diesen entweder beenden, oder certbot für den entsprechenden Webserver aufrufen. Anleitungen hierzu auf der Herstellerseite https://certbot.eff.org/lets-encrypt/ubuntuxenial-nginx.html
 ```
-sudo apt install certbot
 sudo certbot certonly --standalone 
 ```
 3. Port 80 Weiterleitung entfernen
@@ -190,9 +189,9 @@ Die Datei kann auch mit einem Editor angelegt werden und dann WinSCP oder andere
 sudo nano /lib/systemd/system/ghome.service
 ```
 Nun öffnet sich der Editor nano. 
-- Inhalt des Scriptes unten mit <STRG>+<V> kopieren
+- Inhalt des Scriptes unten mit < STRG > + < V > kopieren
 - mit der RECHTEN Maustaste in der Console klicken, das überträge den kopierten Text
-- mit <STRG>+<X> nano beenden. Die Frage ob gespeichert werden soll mit J/Y (je nach Sprache) beantworten.
+- mit < STRG > + < X > nano beenden. Die Frage ob gespeichert werden soll mit J/Y (je nach Sprache) beantworten.
 
 Inhalt für das Script.
 ```
@@ -248,10 +247,9 @@ sudo service status
      - Testing rechts oben aktivieren, wenn nicht automatisch passiert
 7. action.json
 
-Den Inhalt der action.json mit dem Inhalt der action-sample.json aus diesem Ordner ersetzen. `https://SERVICEURL` wird dabei durch die URL ersetzt, unter welcher der Dienst bei euch erreichbar ist.
+Den Inhalt der action.json mit dem Inhalt der action-sample.json aus diesem Ordner ersetzen. <change_me__domainname>  wird dabei durch die URL ersetzt, unter welcher der Dienst bei euch erreichbar ist.
 action.json
 
-<change_me__domainname> ist die Domäne die weiter oben angelegt wurde. Im Beispiel "
 ```
 {
   "actions": [
