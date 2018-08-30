@@ -1,16 +1,63 @@
+```
+sudo apt install certbot
+sudo certbot
+```
+
+
+
 # Google Home/Assistant FHEM Connector
 
 ghome-fhem verbindet FHEM mit Google Assistant und erlaubt dadurch die Nutzung der FHEM Geräte in Verbindung mit jedem Google Assistant fähigem Gerät. Dies ist ein Fork des ursprünglich von yanniks bereitgestellten Repositories. Ein großes Danke für seine Entwicklung!
 
+## Vorbereitende Arbeiten
+1. Fehlende Pakete installieren. Je nach Distribution können Pakete fehlen. 
+```
+sudo apt-get -qq install  git
+
+#pwgen - optional zum generieren von Passwörtern
+sudo apt-get -qq install pwgen 
+
+sudo apt-get -qq install curl
+
+#NPM installieren -- Achtung, sudo curl bis sudo -E bash - ist eine Zeile
+
+sudo curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+
+sudo apt-get -qq install nodejs
+```
+
+## Optional, jetzt schon Passwörter und Benutzernamen mit pwgen erstellen
+
+| Feldame in der Anleitung | pwgen Befehl | Beispiel |
+|---|---|---|
+|oauthClientId |pwgen -N 1 -s 8   |  wgbkHUA2 |
+|oauthClientSecret|pwgen -N 1 -s 42   |G9T0TKc0qdrzWwYHurecO0IZYUf93qB80nJPZ4XAcx   |
+|oauthUser|pwgen -N 1 -s 8   | wDgsn36x|
+|password|pwgen -N 1 -s 42   | WqoHFS0FzNzeEfPPwvC5gRAnZCt5vvM8LVEF3aL4LQ  |
+|authtoken| pwgen -N 1 -s 42  | agUACUoaCFQt2qFLcKzY2J0FDAOyIcjsGcOckpVBEo  |
+
+
 ## Domain registrieren z.B. bei ddnss.de (gratis)
 1. Account bei ddnss.de anlegen
 2. Autoupdate der IP einrichten
-	```
+```
 	sudo crontab -e
 	39 * * * * /usr/bin/wget -q -O - "https://ddnss.de/upd.php?key=CHANGEME&host=CHANGEME.ddnss.de"
-	```
+```
 
 ## Zertifikat erstellen
+
+Letsencrypt installieren
+
+ 1. Source zu apt hinzufügen
+
+```
+sudo echo "deb http://ftp.debian.org/debian stretch-backports main" >> /etc/apt/sources.list.d/letsencrypt.list
+```
+
+ 2. Eigentliche Installation
+ 
+
 letsencrypt Zertifikat für diesen Host erstellen (unbedingt notwendig, ohne gültiges Zertifikat geht nichts!)
 1. Port 80 auf RPi weiterleiten
 2. certbot ausführen
