@@ -228,6 +228,8 @@ sudo service status
 
 ## Google Action Projekt erstellen
 
+Screenshots der einzelnen Schritte im "doc"-Ordner. (Google_Actions.docx)
+
 1. https://console.actions.google.com/ Add/import project auswählen
 2. Projektname FHEM-Connector
 3. Home Control auswählen
