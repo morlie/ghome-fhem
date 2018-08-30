@@ -99,7 +99,8 @@ cp ghome-fhem/config-sample.json .ghome/config.json
 
 4. config.json anpassen
 
-Im Beispiel 
+Im Beispiel alle <change_me__xxxx> durch generierte Zeichenfolge ersetzen. So stellt ihr sicher, dass der Zugang für unbefugte Personen zumindest erschwert wird.
+
 ```
 {
     "ghome": {
@@ -164,20 +165,36 @@ Mit den Beispielwerten von oben würde die Datei so aussehen ...
 ```
 
 
-
-Bitte passt Benutzername (CHANGEMEusername) und Passwort (password) an, ersetzt auch die Werte von `oauthClientId`, `oauthClientSecret` und `authtoken`, gerne auch duch zufällig generierte Werte. So stellt ihr sicher, dass der Zugang für unbefugte Personen zumindest erschwert wird.
-
 4. letsencrypt Zertifikat kopieren
 ```
 sudo cp /etc/letsencrypt/DOMAIN/privkey.pem $HOME/ghome/ghome-fhem/key.pem
 sudo cp /etc/letsencrypt/DOMAIN/fullchain.pem $HOME/ghome/ghome-fhem/cert.pem
 ```
 
-5. Port 443 (extern) auf 3000 (intern, auf das Gerät wo ghome läuft) weiterleiten
+5. Port 443 (extern) auf 3000 (intern, auf das Gerät wo ghome läuft) weiterleiten. Auch das muss wieder am Router gemacht werden. Hier ist zu beachten, dass sich externer und interner Port unterscheidet.
 
 6. bin/ghome starten
+Wenn die Schritte bis hierher korrekt ausgeführt wurde startet ghome mit etlichen Meldungen. 
 
-systemd Konfiguration (optional)
+
+<<<< TODO, Log posten  <<<<<
+
+
+
+7. SystemD Dienst anlegen
+
+Die Datei kann auch mit einem Editor angelegt werden und dann WinSCP oder anderem SSH-Client auf den Server gelegt werden. Hierbei ist zu beachten, dass die Formatiertung (End of Line) Unix-konform ist. Sonst läuft es möglicherweise nicht. Empfohlen wird nano oder vi Editor.
+
+
+```
+sudo nano /lib/systemd/system/ghome.service
+```
+Nun öffnet sich der Editor nano. 
+- Inhalt des Scriptes unten mit <STRG>+<V> kopieren
+- mit der RECHTEN Maustaste in der Console klicken, das überträge den kopierten Text
+- mit <STRG>+<X> nano beenden. Die Frage ob gespeichert werden soll mit J/Y (je nach Sprache) beantworten.
+
+Inhalt für das Script.
 ```
 [Unit]
 Description=Google Assistant FHEM Connector
@@ -194,6 +211,21 @@ Restart=on-failure
 WantedBy=multi-user.target
 Alias=ghome.service
 ```
+
+Service aktivierte damit ghome bei einem Systemstart mitgestartet wird
+
+```
+sudo systemctl enable ghome.service
+```
+
+Testen mit start (starten), stop (stoppen), status (Status wird angezeigt. Wenn der Diest läuft sollte ein grüner Punkt vor dem Prozess sein)
+
+```
+sudo service ghome start
+sudo service ghome stop
+sudo service status
+```
+
 
 ## Google Action Projekt erstellen
 
@@ -218,6 +250,8 @@ Alias=ghome.service
 
 Den Inhalt der action.json mit dem Inhalt der action-sample.json aus diesem Ordner ersetzen. `https://SERVICEURL` wird dabei durch die URL ersetzt, unter welcher der Dienst bei euch erreichbar ist.
 action.json
+
+<change_me__domainname> ist die Domäne die weiter oben angelegt wurde. Im Beispiel "
 ```
 {
   "actions": [
@@ -233,7 +267,7 @@ action.json
   "conversations": {
     "automation": {
       "name": "automation",
-      "url": "https://CHANGEME.ddnss.de"
+      "url": "<change_me__domainname>"
     }
   },
   "locale": "de"
