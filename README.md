@@ -50,7 +50,7 @@ Hierfür werden diese Werte benötigt, die im ersten Schritt erzeugt wurden.
 
 | Feldame in der Anleitung | pwgen Befehl | Beispiel |
 |---|---|---|
-|<change_me___oauthClientId>|pwgen -N 1 -s 8   |  m5taWv7ZSZL9ROJ3D1wY12s9V6VKckkluHtdKMxQsd |
+|<change_me___oauthClientId>|pwgen -N 1 -s 42   |  m5taWv7ZSZL9ROJ3D1wY12s9V6VKckkluHtdKMxQsd |
 |<change_me___oauthClientSecret>|pwgen -N 1 -s 42   |G9T0TKc0qdrzWwYHurecO0IZYUf93qB80nJPZ4XAcx   |
 
 Screenshots der einzelnen Schritte im "doc"-Ordner. (Google_Actions.docx)
