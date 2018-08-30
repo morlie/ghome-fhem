@@ -26,7 +26,7 @@ Im Beispiel wird pwgen verwendet. Es kann auch jeder Passwortgenerator online ve
 
 | Feldame in der Anleitung | pwgen Befehl | Beispiel |
 |---|---|---|
-|<change_me___oauthClientId>|pwgen -N 1 -s 8   |  wgbkHUA2 |
+|<change_me___oauthClientId>|pwgen -N 1 -s 42   |  m5taWv7ZSZL9ROJ3D1wY12s9V6VKckkluHtdKMxQsd |
 |<change_me___oauthClientSecret>|pwgen -N 1 -s 42   |G9T0TKc0qdrzWwYHurecO0IZYUf93qB80nJPZ4XAcx   |
 |<change_me___oauthUser>|pwgen -N 1 -s 8   | wDgsn36x|
 |<change_me___password>|pwgen -N 1 -s 42   | WqoHFS0FzNzeEfPPwvC5gRAnZCt5vvM8LVEF3aL4LQ  |
@@ -50,7 +50,7 @@ Hierfür werden diese Werte benötigt, die im ersten Schritt erzeugt wurden.
 
 | Feldame in der Anleitung | pwgen Befehl | Beispiel |
 |---|---|---|
-|<change_me___oauthClientId>|pwgen -N 1 -s 8   |  wgbkHUA2 |
+|<change_me___oauthClientId>|pwgen -N 1 -s 8   |  m5taWv7ZSZL9ROJ3D1wY12s9V6VKckkluHtdKMxQsd |
 |<change_me___oauthClientSecret>|pwgen -N 1 -s 42   |G9T0TKc0qdrzWwYHurecO0IZYUf93qB80nJPZ4XAcx   |
 
 Screenshots der einzelnen Schritte im "doc"-Ordner. (Google_Actions.docx)
@@ -168,7 +168,7 @@ Mit den Beispielwerten von oben würde die Datei so aussehen ...
         "certFile": "./cert.pem",
         "nat-pmp": "",
         "nat-upnp": false,
-        "oauthClientId": "wgbkHUA2",
+        "oauthClientId": "m5taWv7ZSZL9ROJ3D1wY12s9V6VKckkluHtdKMxQsd",
                 "oauthClientSecret": "G9T0TKc0qdrzWwYHurecO0IZYUf93qB80nJPZ4XAcx",
                 "oauthUsers": {
                         "wDgsn36x": {
