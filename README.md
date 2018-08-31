@@ -118,7 +118,7 @@ letsencrypt Zertifikat für diesen Host erstellen (unbedingt notwendig, ohne gü
 1. Port 80 auf RPi weiterleiten. Das muss am Router (z. B. Fritzbox) gemacht werden. Hierzu den externen Port 80 zum internen Port 80 auf den Raspberry weiterleiten. < Internet > -->Port 80--> < Router > -->Port 80--> < Raspberry >
 2. certbot ausführen und Fragen beantworten. Der Parameter "--standalone" startet einen eigenen, temporären Webserver. Wenn nginx oder apache auf dem Server läuft diesen entweder beenden, oder certbot für den entsprechenden Webserver aufrufen. Anleitungen hierzu auf der Herstellerseite https://certbot.eff.org/lets-encrypt/ubuntuxenial-nginx.html
 ```
-sudo certbot certonly --standalone 
+sudo certbot certonly --standalone --agree-tos
 ```
 3. Port 80 Weiterleitung entfernen
 4. Bei jedem Zertifikatsrenew (certbot renew) muss Port 80 wieder weitergeleitet werden (alle 3 Monate)
@@ -218,8 +218,8 @@ Mit den Beispielwerten von oben würde die Datei so aussehen ...
 
 4. letsencrypt Zertifikat kopieren
 ```
-sudo cp /etc/letsencrypt/DOMAIN/privkey.pem $HOME/ghome/ghome-fhem/key.pem
-sudo cp /etc/letsencrypt/DOMAIN/fullchain.pem $HOME/ghome/ghome-fhem/cert.pem
+sudo cp /etc/letsencrypt/<change_me___domain>/privkey.pem $HOME/ghome/ghome-fhem/key.pem
+sudo cp /etc/letsencrypt/<change_me___domain/fullchain.pem $HOME/ghome/ghome-fhem/cert.pem
 ```
 
 4b. letencrypt Zertifikate ohne kopieren einbinden
