@@ -1,10 +1,32 @@
+<  REVIEW   COMMENTS   >
+
+Ein paar Gedankengänge zu meinen Änderungen
+
+- Google Home kann unabhängig von den Installation im Raspberry gemacht werden. Für den Fall, dass es "zwischendrin" geamcht wird ist es ein Bruch im Prozess und wenn weniger "begabte" Leute halbfertige Raspberry Settings haben, dann noch andere Sachen parallel machen ist das Chaos perfekt.
+
+- Ich selber habe ein Setupscript für mich. Ich pulle es nicht da sonst das Forum mit Fragen überläuft. Wenn du es für dich haben willst ... gerne
+
+- Namen der Variablen habe ich mit Klammern < > kenntlich gemacht, hoffe dass es dann klarer ist, dass hier was ersetzt werden soll. Bin selber drüber gefallen und habe ein "CHANGEME" übersehen
+
+- Habe die Sample-Files für config und action identisch zum Text hochgeladen. Dann müssen nur noch Variablen erstetzt werden
+
+- systemd ... optional rausgenommen. Linux Experten wissen wie man eine Executible startet. Unerfahrene User sollen hier den Dienst in den Autostart reinhaun und gut ist
+
+- Habe die Ordnerstruktur in der Installationsdoku geändert. Name des Git ist "ghome-fhem". Bin der Meinung, ein zusätzlicher Ordner "ghome" parallel zum versteckten Ordner ".ghome" verwirrt. 
+
+
+
+
 
 # Google Home/Assistant FHEM Connector
 
 ghome-fhem verbindet FHEM mit Google Assistant und erlaubt dadurch die Nutzung der FHEM Geräte in Verbindung mit jedem Google Assistant fähigem Gerät. Dies ist ein Fork des ursprünglich von yanniks bereitgestellten Repositories. Ein großes Danke für seine Entwicklung!
 
 ## Vorbereitende Arbeiten
-1. Fehlende Pakete installieren. Je nach Distribution können Pakete fehlen. 
+
+1. Sicherung der aktuellen Installation. Beim Raspberry die SD-Karte, ansonsten Backup zum System passend. 
+
+2. Fehlende Pakete installieren. Je nach Distribution können Pakete fehlen. 
 ```
 sudo apt-get -qq install  git
 
@@ -41,19 +63,19 @@ Im Beispiel wird pwgen verwendet. Es kann auch jeder Passwortgenerator online ve
 	39 * * * * /usr/bin/wget -q -O - "https://ddnss.de/upd.php?key=CHANGEME&host=CHANGEME.ddnss.de"
 ```
 
-2. Alternativ kann den Update der IP auch der Router übernehmen wenn er diese Funktion bietet (z. B. Fritzbox). Anleitungen bieten idR. die Anbieter des dyndns-Dienstes.
+2. Alternativ kann den Update der IP auch der Router übernehmen wenn er diese Funktion bietet (z. B. Fritzbox). Anleitungen bieten die Anbieter des dyndns-Dienstes (FAQ).
 
 
 ## Google Action Projekt erstellen
 
-Hierfür werden diese Werte benötigt, die im ersten Schritt erzeugt wurden. 
+Hierfür werden die ersten beiden Werte (Hashwerte) von oben benötigt 
 
 | Feldame in der Anleitung | pwgen Befehl | Beispiel |
 |---|---|---|
 |<change_me___oauthClientId>|pwgen -N 1 -s 42   |  m5taWv7ZSZL9ROJ3D1wY12s9V6VKckkluHtdKMxQsd |
 |<change_me___oauthClientSecret>|pwgen -N 1 -s 42   |G9T0TKc0qdrzWwYHurecO0IZYUf93qB80nJPZ4XAcx   |
 
-Screenshots der einzelnen Schritte im "doc"-Ordner. (Google_Actions.docx)
+Screenshots der einzelnen Schritte im "doc"-Ordner. (Datei Google_Actions.docx)
 
 1. https://console.actions.google.com/ Add/import project auswählen
 2. Projektname FHEM-Connector
@@ -75,6 +97,8 @@ Screenshots der einzelnen Schritte im "doc"-Ordner. (Google_Actions.docx)
 
 
 ## Zertifikat erstellen
+
+Wenn bereits Zertifikate vorhanden sind können diese verwendet werden. Ansonsten können diese mit Letsencrypt erstellt werden.
 
 Letsencrypt installieren
 
@@ -99,6 +123,8 @@ sudo certbot certonly --standalone
 ```
 3. Port 80 Weiterleitung entfernen
 4. Bei jedem Zertifikatsrenew (certbot renew) muss Port 80 wieder weitergeleitet werden (alle 3 Monate)
+
+https://certbot.eff.org/lets-encrypt/debianstretch-other
 
 ## ghome-fhem installieren
 1. GitHub repo lokal auschecken
