@@ -14,8 +14,7 @@ Ein paar Gedankengänge zu meinen Änderungen
 
 - Habe die Ordnerstruktur in der Installationsdoku geändert. Name des Git ist "ghome-fhem". Bin der Meinung, ein zusätzlicher Ordner "ghome" parallel zum versteckten Ordner ".ghome" verwirrt. 
 
-
-
+- Kopie der Zertifikate auch in Ordner .ghome, dann sind alle Config- und individuellen Filen in einem Ordner
 
 
 # Google Home/Assistant FHEM Connector
@@ -157,8 +156,8 @@ Im Beispiel alle <change_me__xxxx> durch generierte Zeichenfolge ersetzen. So st
     "ghome": {
         "port": 3000,
         "name": "Google Home",
-        "keyFile": "./key.pem",
-        "certFile": "./cert.pem",
+        "keyFile": "./.ghome/key.pem",
+        "certFile": "./.ghome/cert.pem",
         "nat-pmp": "",
         "nat-upnp": false,
         "oauthClientId": "<change_me___oauthClientId>",
@@ -189,8 +188,8 @@ Mit den Beispielwerten von oben würde die Datei so aussehen ...
     "ghome": {
         "port": 3000,
         "name": "Google Home",
-        "keyFile": "./key.pem",
-        "certFile": "./cert.pem",
+        "keyFile": "./.ghome/key.pem",
+        "certFile": "./.ghome/cert.pem",
         "nat-pmp": "",
         "nat-upnp": false,
         "oauthClientId": "m5taWv7ZSZL9ROJ3D1wY12s9V6VKckkluHtdKMxQsd",
@@ -218,8 +217,8 @@ Mit den Beispielwerten von oben würde die Datei so aussehen ...
 
 4. letsencrypt Zertifikat kopieren
 ```
-sudo cp /etc/letsencrypt/<change_me___domain>/privkey.pem $HOME/ghome/ghome-fhem/key.pem
-sudo cp /etc/letsencrypt/<change_me___domain/fullchain.pem $HOME/ghome/ghome-fhem/cert.pem
+sudo cp /etc/letsencrypt/<change_me___domain>/privkey.pem $HOME/.ghome/key.pem
+sudo cp /etc/letsencrypt/<change_me___domain/fullchain.pem $HOME/.ghome/cert.pem
 ```
 
 4b. letencrypt Zertifikate ohne kopieren einbinden
