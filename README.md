@@ -393,6 +393,9 @@ Es erscheint eine Erfolgsmeldung und der authorization code (Beispiel: 4/TAcdJS4
 
 
 
+Your app for the Assistant for project fhem-connector-940ff was successfully updated with your actions.
+
+
 Field Violations:
 #  Field  Description
 1         URL for conversation is invalid 'ghome.spdns.de'
@@ -409,6 +412,16 @@ Antwort response_type undefined must equal "code"
 In der Google Home-App auf einem Smartphone oder Tablet lässt sich nun im Smart Home-Bereich ein neuer Gerätetyp hinzufügen. In der Liste aller Typen taucht jetzt auch euer eigener auf, er beginnt mit [test].
    
 Eventuell müsst ihr euer Konto mehrmals verknüpfen, bei mir hat es nicht immer beim ersten mal geklappt.
+
+
+Tipp, beim Verknüpfen in  der  App öffnet sich der mobile Browswer. Dieser Link kann auch mit Teilen weitergeleitet werden, und dan
+
+Login 
+<change_me___oauthUser>
+<change_me___password>|
+
+Accounts now linked.
+
 
 ## Mögliche Kommandos
 * “ok google, schalte <gerät> ein”
