@@ -148,7 +148,7 @@ mkdir .ghome
 cp ghome-fhem/config-sample.json .ghome/config.json
 ```
 
-4. config.json anpassen
+4. /home/pi/.ghome/config.json anpassen
 
 Im Beispiel alle <change_me__xxxx> durch generierte Zeichenfolge ersetzen. So stellt ihr sicher, dass der Zugang für unbefugte Personen zumindest erschwert wird.
 
