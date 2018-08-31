@@ -217,13 +217,20 @@ Mit den Beispielwerten von oben würde die Datei so aussehen ...
 
 4. letsencrypt Zertifikat kopieren
 ```
-sudo cp /etc/letsencrypt/<change_me___domain>/privkey.pem $HOME/.ghome/key.pem
-sudo cp /etc/letsencrypt/<change_me___domain/fullchain.pem $HOME/.ghome/cert.pem
+cd $HOME/.ghome
+sudo cp /etc/letsencrypt/live/<change_me___domain>/privkey.pem $HOME/.ghome/key.pem
+sudo cp /etc/letsencrypt/live/<change_me___domain/fullchain.pem $HOME/.ghome/cert.pem
+sudo chown pi *.pem
 ```
 
 4b. letencrypt Zertifikate ohne kopieren einbinden
 
-Hierzu nur ein paar Ansätze .. empfohlen wenn ghome unter einem eigenen User (nicht pi) läuft.
+
+<<<< A L T E R N A T I V    Z U   4 >>>>
+
+
+
+Hierzu nur ein paar Ansätze .. es ist empfohlen in diesem Falle ghome unter einem eigenen User (nicht pi) zu starten.
 
 Annahme:
  - User unter dem ghome läuft   ghomeusr
@@ -256,6 +263,9 @@ In der config.json müssen dann die Zeilen "keyFile" und "certFile" angepasst we
         "keyFile": "/etc/letsencrypt/<change_me__domain>/privkey.pem" ,
         "certFile": "/etc/letsencrypt/<change_me__domain>/fullchain.pem",
 ```
+
+<<<< A L T E R N A T I V    Z U   4   ----   E N D E >>>>
+
 
 5. Port 443 (extern) auf 3000 (intern, auf das Gerät wo ghome läuft) weiterleiten. Auch das muss wieder am Router gemacht werden. Hier ist zu beachten, dass sich externer und interner Port unterscheidet.
 
