@@ -2,7 +2,7 @@
 
 Ein paar Gedankengänge zu meinen Änderungen
 
-- Google Home kann unabhängig von den Installation im Raspberry gemacht werden. Für den Fall, dass es "zwischendrin" geamcht wird ist es ein Bruch im Prozess und wenn weniger "begabte" Leute halbfertige Raspberry Settings haben, dann noch andere Sachen parallel machen ist das Chaos perfekt.
+- Google Home kann unabhängig von den Installation im Raspberry gemacht werden. Für den Fall, dass es "zwischendrin" geamcht wird ist es ein Bruch im Prozess. Wenn bei Fragen weniger "begabte" Leute halbfertige Raspberry Settings belassen verursacht das ggf. woanders Probleme. Eine halbfertige Actions bei Google beinflusst FHEM nicht. 
 
 - Ich selber habe ein Setupscript für mich. Ich pulle es nicht da sonst das Forum mit Fragen überläuft. Wenn du es für dich haben willst ... gerne
 
@@ -36,9 +36,7 @@ sudo apt-get -qq install pwgen
 sudo apt-get -qq install curl
 
 #NPM installieren -- Achtung, sudo curl bis sudo -E bash - ist eine Zeile
-
 sudo curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
-
 sudo apt-get -qq install nodejs
 ```
 
@@ -65,6 +63,7 @@ Im Beispiel wird pwgen verwendet. Es kann auch jeder Passwortgenerator online ve
 
 2. Alternativ kann den Update der IP auch der Router übernehmen wenn er diese Funktion bietet (z. B. Fritzbox). Anleitungen bieten die Anbieter des dyndns-Dienstes (FAQ).
 
+Diese Domain wird in nachfolgender Anleitung <change_me__domain> genannt.
 
 ## Google Action Projekt erstellen
 
