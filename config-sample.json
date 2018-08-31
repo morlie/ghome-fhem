@@ -2,8 +2,8 @@
     "ghome": {
         "port": 3000,
         "name": "Google Home",
-        "keyFile": "./.ghome/key.pem",
-        "certFile": "./.ghome/cert.pem",
+        "keyFile": "/home/pi/.ghome/key.pem",
+        "certFile": "/home/pi/.ghome/cert.pem",
         "nat-pmp": "",
         "nat-upnp": false,
         "oauthClientId": "<change_me___oauthClientId>",
