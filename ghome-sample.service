@@ -1,4 +1,4 @@
-it]
+[Unit]
 Description=Google Assistant FHEM Connector
 After=network-online.target
 
