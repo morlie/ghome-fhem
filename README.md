@@ -226,6 +226,10 @@ sudo cp /etc/letsencrypt/DOMAIN/fullchain.pem $HOME/ghome/ghome-fhem/cert.pem
 
 Hierzu nur ein paar Ansätze .. empfohlen wenn ghome unter einem eigenen User (nicht pi) läuft.
 
+Annahme:
+ User unter dem ghome läuft   ghomeusr
+ Gruppe nur für den lesenden Zugriff auf die Zertifikate    lecert
+
 ```
 #Gruppe für Letsencrypt
 sudo addgroup lecert
