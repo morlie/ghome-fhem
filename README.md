@@ -277,16 +277,14 @@ Wenn die Schritte bis hierher korrekt ausgeführt wurde startet ghome mit etlich
 
 
 
-7. Systemd Dienst anlegen
-
-Die Datei kann auch mit einem Editor angelegt werden und dann WinSCP oder anderem SSH-Client auf den Server gelegt werden. Hierbei ist zu beachten, dass die Formatiertung (End of Line) Unix-konform ist. Sonst läuft es möglicherweise nicht. Empfohlen wird nano oder vi Editor.
+7. Systemd Dienst einrichten
 
 ```
 cd $HOME
-cp sudo ghome-fhem/ghome-sample.service /lib/systemd/system/ghome.service
+sudo cp ghome-fhem/ghome-sample.service /lib/systemd/system/ghome.service
 ```
 
-Inhalt des Scripts. Wenn ghome unter einem anderen User laufen soll muss pi durch den Usernamen ersetzt werden (3 mal enthalten)
+Inhalt des Scripts (bereits vorhanden). Wenn ghome unter einem anderen User laufen soll muss pi durch den Usernamen ersetzt werden (3 mal enthalten)
 ```
 [Unit]
 Description=Google Assistant FHEM Connector
