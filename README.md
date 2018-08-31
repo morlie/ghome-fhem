@@ -104,7 +104,7 @@ Letsencrypt installieren
  1. Source zu apt hinzufügen
 
 ```
-sudo echo "deb http://ftp.debian.org/debian stretch-backports main" >> /etc/apt/sources.list.d/letsencrypt.list
+echo "deb http://ftp.debian.org/debian stretch-backports main" | sudo tee -a /etc/apt/sources.list.d/letsencrypt.list
 sudo apt-get -qq update
 ```
 
