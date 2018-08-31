@@ -227,8 +227,8 @@ sudo cp /etc/letsencrypt/DOMAIN/fullchain.pem $HOME/ghome/ghome-fhem/cert.pem
 Hierzu nur ein paar Ansätze .. empfohlen wenn ghome unter einem eigenen User (nicht pi) läuft.
 
 Annahme:
- User unter dem ghome läuft   ghomeusr
- Gruppe nur für den lesenden Zugriff auf die Zertifikate    lecert
+ - User unter dem ghome läuft   ghomeusr
+ - Gruppe nur für den lesenden Zugriff auf die Zertifikate    lecert
 
 ```
 #Gruppe für Letsencrypt
@@ -252,9 +252,10 @@ Einschränkung des Users ghomeUsr
 
 Vorteil: Zertifikat muss beim Erneuern nicht jedes mal kopiert werden.
 
+In der config.json müssen dann die Zeilen "keyFile" und "certFile" angepasst werden.
 ```
-        "keyFile": "/etc/letsencrypt/ghome.ddns.de/privkey.pem" ,
-        "certFile": "/etc/letsencrypt/ghome.ddns.de/fullchain.pem",
+        "keyFile": "/etc/letsencrypt/<change_me__domain>/privkey.pem" ,
+        "certFile": "/etc/letsencrypt/<change_me__domain>/fullchain.pem",
 ```
 
 5. Port 443 (extern) auf 3000 (intern, auf das Gerät wo ghome läuft) weiterleiten. Auch das muss wieder am Router gemacht werden. Hier ist zu beachten, dass sich externer und interner Port unterscheidet.
@@ -267,7 +268,7 @@ Wenn die Schritte bis hierher korrekt ausgeführt wurde startet ghome mit etlich
 
 
 
-7. SystemD Dienst anlegen
+7. Systemd Dienst anlegen
 
 Die Datei kann auch mit einem Editor angelegt werden und dann WinSCP oder anderem SSH-Client auf den Server gelegt werden. Hierbei ist zu beachten, dass die Formatiertung (End of Line) Unix-konform ist. Sonst läuft es möglicherweise nicht. Empfohlen wird nano oder vi Editor.
 
