@@ -294,15 +294,7 @@ In der config.json müssen dann die Zeilen "keyFile" und "certFile" angepasst we
 
 5. Port 443 (extern) auf 3000 (intern, auf das Gerät wo ghome läuft) weiterleiten. Auch das muss wieder am Router gemacht werden. Hier ist zu beachten, dass sich externer und interner Port unterscheidet.
 
-6. bin/ghome starten
-Wenn die Schritte bis hierher korrekt ausgeführt wurde startet ghome mit etlichen Meldungen. 
-
-
-<<<< TODO, Log posten  <<<<<
-
-
-
-7. Systemd Dienst einrichten
+6. Systemd Dienst einrichten
 
 ```
 cd $HOME
