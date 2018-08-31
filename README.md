@@ -156,8 +156,8 @@ Im Beispiel alle <change_me__xxxx> durch generierte Zeichenfolge ersetzen. So st
     "ghome": {
         "port": 3000,
         "name": "Google Home",
-        "keyFile": "./.ghome/key.pem",
-        "certFile": "./.ghome/cert.pem",
+        "keyFile": "/home/pi/.ghome/key.pem",
+        "certFile": "/home/pi/.ghome/cert.pem",
         "nat-pmp": "",
         "nat-upnp": false,
         "oauthClientId": "<change_me___oauthClientId>",
@@ -188,8 +188,8 @@ Mit den Beispielwerten von oben würde die Datei so aussehen ...
     "ghome": {
         "port": 3000,
         "name": "Google Home",
-        "keyFile": "./.ghome/key.pem",
-        "certFile": "./.ghome/cert.pem",
+        "keyFile": "/home/pi/.ghome/key.pem",
+        "certFile": "/home/pi/.ghome/cert.pem",
         "nat-pmp": "",
         "nat-upnp": false,
         "oauthClientId": "m5taWv7ZSZL9ROJ3D1wY12s9V6VKckkluHtdKMxQsd",
