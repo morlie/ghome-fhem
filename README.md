@@ -307,11 +307,7 @@ sudo service ghome start
 sudo service ghome stop
 sudo service status
 ```
-
-
-
-     
-     
+ 
 ## Google action und lokalen Server bekannt machen
 
 Den Inhalt der action.json kopieren und   <change_me__domainname>  durch die Domain die registriert wurde ersetzen (im Beispiel ddnss.de). Unter welcher der Dienst bei euch erreichbar ist.
@@ -323,7 +319,7 @@ mkdir .ghome
 cp ghome-fhem/config-action.json .ghome/action.json
 ```
 
-Inhalt von .ghome/action.json anpassen (domainname)
+Inhalt von .ghome/action.json anpassen <change_me__domain>
 ```
 {
   "actions": [
@@ -339,7 +335,7 @@ Inhalt von .ghome/action.json anpassen (domainname)
   "conversations": {
     "automation": {
       "name": "automation",
-      "url": "<change_me__domainname>"
+      "url": "<change_me__domain>"
     }
   },
   "locale": "de"
@@ -350,6 +346,7 @@ Inhalt von .ghome/action.json anpassen (domainname)
 Download von hier: https://developers.google.com/actions/tools/gactions-cli
 
 In diesem Codeblock wird die ARM Version (Raspberry) mit wget heruntergeladen.
+<change_me_project_ID> ist der technische Name der Action bei Google. Letze Seite im Word Dokument (doc/Google_Actions.docx)
 ```
 cd $HOME/.ghome
 wget -c https://dl.google.com/gactions/updates/bin/linux/arm/gactions
