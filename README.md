@@ -226,7 +226,7 @@ sudo chown pi *.pem
 4b. letencrypt Zertifikate ohne kopieren einbinden
 
 
-<<<< A L T E R N A T I V    Z U   4 >>>>
+<<<<--A L T E R N A T I V--Z U--4 >>>>
 
 
 
@@ -264,7 +264,7 @@ In der config.json müssen dann die Zeilen "keyFile" und "certFile" angepasst we
         "certFile": "/etc/letsencrypt/<change_me__domain>/fullchain.pem",
 ```
 
-<<<< A L T E R N A T I V    Z U   4   ----   E N D E >>>>
+<<<< A L T E R N A T I V--Z U--4   ----   E N D E >>>>
 
 
 5. Port 443 (extern) auf 3000 (intern, auf das Gerät wo ghome läuft) weiterleiten. Auch das muss wieder am Router gemacht werden. Hier ist zu beachten, dass sich externer und interner Port unterscheidet.
