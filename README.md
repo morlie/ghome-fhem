@@ -12,7 +12,7 @@ Ein paar Gedankengänge zu meinen Änderungen
 
 - systemd ... optional rausgenommen. Linux Experten wissen wie man eine Executible startet. Unerfahrene User sollen hier den Dienst in den Autostart reinhaun und gut ist
 
-- Habe die Ordnerstruktur in der Installationsdoku geändert. Name des Git ist "ghome-fhem". Bin der Meinung, ein zusätzlicher Ordner "ghome" parallel zum versteckten Ordner ".ghome" verwirrt. 
+- Habe die Ordnerstruktur in der Installationsdoku geändert. Name des Git ist "ghome-fhem". Bin der Meinung, ein zusätzlicher Ordner "ghome" parallel zum versteckten Ordner ".ghome" verwirrt. Wenn versteckte Ordner nicht angezeigt wird ist die Gefahr groß dass hier in den falschen Ordner kopiert wird.
 
 - Kopie der Zertifikate auch in Ordner .ghome, dann sind alle Config- und individuellen Filen in einem Ordner. Absoluter Pfad in der config.json damit werden die Zertifikate auch gefunden, wenn der Anwender ghome aus einem Verzeichnis unglich Home-Verzeichnis aufruft.
 
@@ -144,6 +144,8 @@ letsencrypt Zertifikat für diesen Host erstellen (unbedingt notwendig, ohne gü
 ```
 sudo certbot certonly --standalone --agree-tos
 ```
+Fragen bestätigen bzw. Informationen eintragen. Hier wird auch die <change_me___domain> benötigt.
+
 3. Port 80 Weiterleitung entfernen
 4. Bei jedem Zertifikatsrenew (certbot renew) muss Port 80 wieder weitergeleitet werden (alle 3 Monate)
 
@@ -157,8 +159,7 @@ cd $HOME
 git clone https://github.com/dominikkarall/ghome-fhem
 ```
 
-Jetzt sollte es Ordner /home/pi/ghome-fhem mit dem Inhalt des Git-Projektes geben. Wenn das Setup nicht mit dem User pi sondern mit einem anderen gemacht werden ist <pi> durch den enstsprechenden Namen zu ersetzen.
-
+Jetzt sollte es Ordner /home/pi/ghome-fhem mit dem Inhalt des Git-Projektes geben. Wenn das Setup nicht mit dem User pi ist der Username "pi" durch den enstsprechenden Namen zu ersetzen.
 
 2. Im Ordner folgendes Kommando ausführen:
 ```
@@ -248,12 +249,15 @@ sudo cp /etc/letsencrypt/live/<change_me___domain/fullchain.pem $HOME/.ghome/cer
 sudo chown pi *.pem
 ```
 
+Hinweis: Bei jeder Erneuerung der Zertifikate müssen diese wieder in /home/pi/.ghome kopiert werden.
+
+
 4b. letencrypt Zertifikate ohne kopieren einbinden
 
 
 <<<<--A L T E R N A T I V--Z U--4 >>>>
 
-
+Linux know-how nötig
 
 Hierzu nur ein paar Ansätze .. es ist empfohlen in diesem Falle ghome unter einem eigenen User (nicht pi) zu starten.
 
@@ -292,7 +296,7 @@ In der config.json müssen dann die Zeilen "keyFile" und "certFile" angepasst we
 <<<< A L T E R N A T I V--Z U--4   ----   E N D E >>>>
 
 
-5. Port 443 (extern) auf 3000 (intern, auf das Gerät wo ghome läuft) weiterleiten. Auch das muss wieder am Router gemacht werden. Hier ist zu beachten, dass sich externer und interner Port unterscheidet.
+5. Port 443 (extern) auf 3000 (intern, auf Raspberry oder Server) weiterleiten. Auch das muss wieder am Router gemacht werden. Hier ist zu beachten, dass sich externer und interner Port unterscheidet.
 
 6. Systemd Dienst einrichten
 
@@ -301,7 +305,7 @@ cd $HOME
 sudo cp ghome-fhem/ghome-sample.service /lib/systemd/system/ghome.service
 ```
 
-Inhalt des Scripts (bereits vorhanden). Wenn ghome unter einem anderen User laufen soll muss pi durch den Usernamen ersetzt werden (3 mal enthalten)
+Inhalt des Scripts (bereits vorhanden). Wenn ghome unter einem anderen User laufen soll, muss pi durch den Usernamen ersetzt werden (3 mal enthalten)
 ```
 [Unit]
 Description=Google Assistant FHEM Connector
@@ -391,7 +395,7 @@ Link in einem Browser öffnen. Zugriff von actions.cli auf Google-Account erlaub
 
 Es erscheint eine Erfolgsmeldung und der authorization code (Beispiel: 4/TAcdJS4FZJw9J_5V0SKrGYdhi67e5t8fVZvujgdaJg2-9a_AP-8OiTa
 
-Diesen bei "Enter authorization code:" eintragen.
+Diesen in der Konsole bei "Enter authorization code:" eintragen.
 
 Erfolgsmeldung
 
