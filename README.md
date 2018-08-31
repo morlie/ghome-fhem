@@ -18,6 +18,8 @@ Ein paar Gedankengänge zu meinen Änderungen
 
 - Ich musste "global userattr genericDeviceType" von Hand anlegen. So gewollt?
 
+- Im Log zu ghome ist die Meldung "[FHEM] no ghome device found. please define it.". Gibt es dazu ein Modul? Oder sollte die Prüfung beim Start entfernt werden?
+
 
 # Google Home/Assistant FHEM Connector
 
