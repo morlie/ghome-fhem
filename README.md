@@ -379,42 +379,37 @@ chmod +x gactions
 
 Verknüpfung bestätigen
 
-pi@debian964:~/.ghome$ ./gactions update --action_package action.json --project fhem-connector-940ff
+```
+pi@debian964:~/.ghome$ ./gactions update --action_package action.json --project fhem-connector-a99ds
 Gactions needs access to your Google account. Please copy & paste the URL below into a web browser and follow the instructions there. Then copy and paste the authorization code from the browser back here.
 Visit this URL:
- https://accounts.google.com/o/oauth2/auth?access_type=offline&client_id=237807841406-o6vu1tjkq8oqjub8jilj6vuc396e2d0c.apps.googleusercontent.com&redirect_uri=urn%3Aietf%3Awg%3Aoauth%3A2.0%3Aoob&response_type=code&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Factions.builder&state=state
+ https://accounts.google.com/o/oauth2/auth?access_type=offline&client_id=257807841406-o6vu1tgkq8oqjub8jilj6vuc396e2d4d.apps.googleusercontent.com&redirect_uri=urn%3Aietf%3Awg%3Aoauth%3A2.0%3Aoob&response_type=code&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Factions.builder&state=state
 Enter authorization code:
+```
 
-
-Link in einem Browser öffnen. Zugriff von actions.cli auf Google-Account erlauben
+Link in einem Browser öffnen. Zugriff von actions.cli auf Google-Account erlauben.
 
 Es erscheint eine Erfolgsmeldung und der authorization code (Beispiel: 4/TAcdJS4FZJw9J_5V0SKrGYdhi67e5t8fVZvujgdaJg2-9a_AP-8OiTa
 
+Diesen bei "Enter authorization code:" eintragen.
 
+Erfolgsmeldung
 
+"Your app for the Assistant for project fhem-connector-940ff was successfully updated with your actions."
 
-Your app for the Assistant for project fhem-connector-940ff was successfully updated with your actions.
+Fertig.
 
+Bei Fehler kann folgendes geprüft werden:
 
-Field Violations:
-#  Field  Description
-1         URL for conversation is invalid 'ghome.spdns.de'
-2018/08/31 19:01:56 Server did not return HTTP 200
+- Zeritifikat gültig: https://<replace_me___domain> im Browser öffnen. Neben dem Link sollte ein grünes Schloss (je nach Browser) erscheinen. Wenn statt dessen eine Zertifikatswarnung erscheint --> Zertifikatsproblem 
 
----> Portforwarding testen (Link https://<replace_me___domain/auth im Browser aufrufen)
-
-Antwort response_type undefined must equal "code"
-
-
+- Richtige project_id eingetragen?
 
 
 ## Google Home App einrichten
 In der Google Home-App auf einem Smartphone oder Tablet lässt sich nun im Smart Home-Bereich ein neuer Gerätetyp hinzufügen. In der Liste aller Typen taucht jetzt auch euer eigener auf, er beginnt mit [test].
    
 Eventuell müsst ihr euer Konto mehrmals verknüpfen, bei mir hat es nicht immer beim ersten mal geklappt.
-
-
-Tipp, beim Verknüpfen in  der  App öffnet sich der mobile Browswer. Dieser Link kann auch mit Teilen weitergeleitet werden, und dan
 
 Login 
 <change_me___oauthUser>
