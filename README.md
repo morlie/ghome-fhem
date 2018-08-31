@@ -74,7 +74,7 @@ Hierfür werden die ersten beiden Werte (Hashwerte) von oben benötigt
 |<change_me___oauthClientId>|pwgen -N 1 -s 42   |  m5taWv7ZSZL9ROJ3D1wY12s9V6VKckkluHtdKMxQsd |
 |<change_me___oauthClientSecret>|pwgen -N 1 -s 42   |G9T0TKc0qdrzWwYHurecO0IZYUf93qB80nJPZ4XAcx   |
 
-Screenshots der einzelnen Schritte im "doc"-Ordner. (Datei Google_Actions.docx) [Google_Actions.docx](doc/Google_Actions.docx)
+Screenshots der einzelnen Schritte im "doc"-Ordner ([Google_Actions.docx](docs/Google_Actions.docx))
 
 1. https://console.actions.google.com/ Add/import project auswählen
 2. Projektname FHEM-Connector
