@@ -14,7 +14,7 @@ Ein paar Gedankengänge zu meinen Änderungen
 
 - Habe die Ordnerstruktur in der Installationsdoku geändert. Name des Git ist "ghome-fhem". Bin der Meinung, ein zusätzlicher Ordner "ghome" parallel zum versteckten Ordner ".ghome" verwirrt. 
 
-- Kopie der Zertifikate auch in Ordner .ghome, dann sind alle Config- und individuellen Filen in einem Ordner
+- Kopie der Zertifikate auch in Ordner .ghome, dann sind alle Config- und individuellen Filen in einem Ordner. Absoluter Pfad in der config.json damit werden die Zertifikate auch gefunden, wenn der Anwender ghome aus einem Verzeichnis unglich Home-Verzeichnis aufruft.
 
 
 # Google Home/Assistant FHEM Connector
