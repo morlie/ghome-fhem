@@ -16,6 +16,8 @@ Ein paar Gedankengänge zu meinen Änderungen
 
 - Kopie der Zertifikate auch in Ordner .ghome, dann sind alle Config- und individuellen Filen in einem Ordner. Absoluter Pfad in der config.json damit werden die Zertifikate auch gefunden, wenn der Anwender ghome aus einem Verzeichnis unglich Home-Verzeichnis aufruft.
 
+- Ich musste "global userattr genericDeviceType" von Hand anlegen. So gewollt?
+
 
 # Google Home/Assistant FHEM Connector
 
@@ -38,6 +40,27 @@ sudo apt-get -qq install curl
 sudo curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
 sudo apt-get -qq install nodejs
 ```
+
+3. Ein (Test)-Gerät in Fhem anlegen
+In FHEM ein Gerät dem Google Home Raum zuordnen
+
+```
+attr Office room GoogleHome
+```
+
+userattr genericDeviceType in FHEM anlegen
+```
+attr global userattr genericDeviceType:security,ignore,switch,outlet,light,blind,thermometer,thermostat,contact,garage,window,lock
+```
+
+den zu schaltenden Devices das Attribut genericDeviceType zuordnen
+
+```
+attr Office genericDeviceType switch
+```
+
+
+
 
 ## Passwörter und Benutzernamen (mit pwgen) erstellen
 
