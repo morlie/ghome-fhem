@@ -327,9 +327,9 @@ sudo systemctl enable ghome.service
 Testen mit start (starten), stop (stoppen), status (Status wird angezeigt. Wenn der Diest läuft sollte ein grüner Punkt vor dem Prozess sein)
 
 ```
-sudo service ghome start
-sudo service ghome stop
-sudo service status
+sudo systemctl start ghome
+sudo systemctl status ghome
+sudo systemctl stop ghome
 ```
  
 ## Google action und lokalen Server bekannt machen
@@ -339,11 +339,10 @@ Den Inhalt der action.json kopieren und   <change_me__domainname>  durch die Dom
 action.json kopieren
 ```
 cd $HOME
-mkdir .ghome
-cp ghome-fhem/config-action.json .ghome/action.json
+cp ghome-fhem/action-sample.json .ghome/action.json
 ```
 
-Inhalt von .ghome/action.json anpassen <change_me__domain>
+Inhalt von .ghome/action.json anpassen - <change_me__domain>
 ```
 {
   "actions": [
@@ -373,10 +372,39 @@ In diesem Codeblock wird die ARM Version (Raspberry) mit wget heruntergeladen.
 <change_me_project_ID> ist der technische Name der Action bei Google. Letze Seite im Word Dokument (doc/Google_Actions.docx)
 ```
 cd $HOME/.ghome
-wget -c https://dl.google.com/gactions/updates/bin/linux/arm/gactions
+wget -c https://dl.google.com/gactions/updates/bin/linux/arm/gactions/gactions
 chmod +x gactions
 ./gactions update --action_package action.json --project <change_me__google_project_ID>
 ```
+
+Verknüpfung bestätigen
+
+pi@debian964:~/.ghome$ ./gactions update --action_package action.json --project fhem-connector-940ff
+Gactions needs access to your Google account. Please copy & paste the URL below into a web browser and follow the instructions there. Then copy and paste the authorization code from the browser back here.
+Visit this URL:
+ https://accounts.google.com/o/oauth2/auth?access_type=offline&client_id=237807841406-o6vu1tjkq8oqjub8jilj6vuc396e2d0c.apps.googleusercontent.com&redirect_uri=urn%3Aietf%3Awg%3Aoauth%3A2.0%3Aoob&response_type=code&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Factions.builder&state=state
+Enter authorization code:
+
+
+Link in einem Browser öffnen. Zugriff von actions.cli auf Google-Account erlauben
+
+Es erscheint eine Erfolgsmeldung und der authorization code (Beispiel: 4/TAcdJS4FZJw9J_5V0SKrGYdhi67e5t8fVZvujgdaJg2-9a_AP-8OiTa
+
+
+
+
+Field Violations:
+#  Field  Description
+1         URL for conversation is invalid 'ghome.spdns.de'
+2018/08/31 19:01:56 Server did not return HTTP 200
+
+---> Portforwarding testen (Link https://<replace_me___domain/auth im Browser aufrufen)
+
+Antwort response_type undefined must equal "code"
+
+
+
+
 ## Google Home App einrichten
 In der Google Home-App auf einem Smartphone oder Tablet lässt sich nun im Smart Home-Bereich ein neuer Gerätetyp hinzufügen. In der Liste aller Typen taucht jetzt auch euer eigener auf, er beginnt mit [test].
    
